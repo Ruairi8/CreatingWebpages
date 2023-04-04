@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="http://d3js.org/d3.v5.min.js"></script>
+</head>
+<body style="background-color:#ECFBB1">
+    <div id="body"></div>
+<select id="a1">
+    Choose your display size:
+    <option value="300">300 pixels</option>
+	<option value="600">600 pixels</option>
+	<option value="900">900 pixels</option>
+</select>
+Please choose a color: <input type="color" id="c1">
+<button onclick="chartSize()">Click</button>
+</body>
+</html>
+<script type="text/javascript">
+	var arr = [20, 22, 28, 35, 49, 58, 41, 37, 25, 17, 10];
+	
+	var height = document.getElementById("a1").value;
+	var color = document.getElementById("c1").value;
+
+function chartSize() {
+	//The SVG Container
+	let svgContainer = d3.select("body").append("svg")
+	    .attr("width", 1000)
+		.attr("height", height);
+
+	//The line SVG Path we draw
+	let rect = svgContainer.selectAll("rect")
+		.data(arr);
+		
+	    rect.enter()
+	// Creating an anonymous function.
+		    .append("rect")
+			    .attr("fill", "yellow")
+				.attr("x", function(d, i) {return 82 + (i*71);})
+				.attr("y", 500)
+				.attr("width", 68)
+			    .transition()
+				.duration(1900)
+			    .attr("x", function(d, i) {return 82 + (i*71);})
+		        .attr("y", function(d) {return 500 - (d*8);})
+		        .attr("width", 68)
+		        .attr("height", function(d) {return d*8;})
+		        .attr("fill", color);
+			
+	let label = svgContainer.selectAll("text")
+	     .data(arr);
+		 
+	label.enter()
+	     .append("text")
+		 .transition()
+		 .duration(1900)
+		     .attr("x", function(d, i) {return 109 + (i*71);})
+		     .attr("y", function(d) {return 525 - (d*8);})
+		     .attr("fill", "white")
+		     .attr("text-align", "middle")
+		     .text(function(d) {return(d)});
+}
+</script>

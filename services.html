@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="http://d3js.org/d3.v5.min.js"></script>
+	<title>Scatterplot Visualization</title>
+</head>
+<body style="background-color:#ECFBB1">
+<svg id="canvas">
+</svg>
+<select id="op">
+    Choose your display size:
+    <option value="300">300 pixels</option>
+	<option value="600">600 pixels</option>
+	<option value="900">900 pixels</option>
+</select>
+Please choose a color: <input type="color" id="col">
+<button onclick="chartSize()">Click</button>
+<div id="div1">
+</div>
+<style>
+.canvas {
+width: 1000px;
+height: 1000px;
+}
+</style>
+</body>
+</html>
+
+<script type="text/javascript">
+var width = 850; 
+var height = document.getElementById("op").value;
+var spacing = 120;
+var color = document.getElementById("col").value;
+
+<!-- Reference 2 taken from https://blog.bitsrc.io/how-to-create-charts-from-external-data-sources-with-d3-js-4abbcb574706 -->
+<!-- Reference 3 taken from https://www.youtube.com/watch?v=SMcD3q3E5lI -->
+<!-- End of Reference 2 -->
+<!-- End of Reference 3 -->
+<!-- The function enables the used to change the display size and color of the svg visualisation:
+function chartSize() {
+    d3.csv("hotels2.csv").then(function(data) {console.log(data);
+
+    let svgContainer = d3.select("#div1").append("svg")
+	                     .attr("width", 900)
+						 .attr("height", height)
+						 .style("background", "white")
+						 .append("g")
+						 .attr("transform", "translate(" + spacing / 2 + "," + spacing / 2 +")");
+						 
+	let xScale = d3.scaleLinear()
+	// Taking away 1 and adding 1 here so the min/max data points will display on the axes:
+	               .domain([d3.min(data, function(d) {return d.Profit}), 240000])
+				   .range([0, width - spacing]);
+	let yScale = d3.scaleLinear()
+	               // .domain([d3.min(data, function(d) {return d.PriceInMillions;})d3.max(data, function(d) {return d.PriceInMillions;})])
+	               .domain([14000000,24000000])
+				   .range([height - spacing, 0]);
+	// Setting variables which align the xScale and yScale to perpendicular axes: 
+	let xAxis = d3.axisBottom(xScale);
+	let yAxis = d3.axisLeft(yScale);
+	
+	// .call() lets the user separate the code for generating the axis from code that adds the axis to the svg. "translate" move svg elements along the
+	// x and y axes:
+	svgContainer.append("g").attr("transform", "translate(0," + (height - spacing) + ")").call(xAxis);
+	svgContainer.append("g").call(yAxis);
+	
+	let points = svgContainer.append("g")
+	                .selectAll("point").data(data);
+	points.enter()
+	      .append("circle")
+		  // cx is the horizontal position of the circle; and cy the vertical position:
+		  .attr("cx", function(d) {return xScale(d.Profit);})
+		  .attr("cy", function(d) {return yScale(d.PriceInMillions);})
+		  .attr("transform", "translate(" + 4 + "," + 4 + ")")
+		  .attr("r", 5)
+		  .style("fill", color);
+})
+}
+</script>
+</body>
+</html>

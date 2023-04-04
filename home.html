@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Homepage<</title>
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body style="background-color:#ECFBB1">
+<h2>Book your hotel with us</h2>
+<div class="align">
+    <p>Choose an hotel according to your preferred price range</p>
+</div>
+<script type="text/javascript">
+	var arr = [20, 5, 28, 15, 56, 49, 2, 36, 11, 8];
+
+	//The SVG Container
+	let svgContainer = d3.select("body").append("svg")
+	    .attr("width", 800)
+		.attr("height", 800);
+
+	//The line SVG Path we draw
+	let rect = svgContainer.selectAll("rect")
+		.data(arr);
+	    rect.enter()
+	// Creating an anonymous function:
+		    .append("rect")
+			.attr("x", function(d, i) {return 75 + (i*55)})
+			.attr("y", function(d) {return 500 - d*8})
+			.transition()
+			.duration()
+		    .attr("x", function(d, i) {return 75 + (i*55)})
+		    .attr("y", function(d) {return 500 - d*8})
+		    .attr("width", 52)
+		    .attr("height", function(d) {return d*8;})
+		    .attr("fill", "red");
+			
+	let label = svgContainer.selectAll("text")
+	     .data(arr);
+		 
+	label.enter()
+	     .append("text")
+		 .attr("x", function(d, i) {return 90 + (i*55)})
+		 .attr("y", function(d) {return 500 - d*8})
+		 .attr("text-align", "middle")
+		 .text("aaa");
+</script>
+</body>
+</html>

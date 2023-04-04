@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body style="background-color:#ECFBB1" class="b1">
+<h2><b>Contact us by phone or email</b></h2>
+<div class="a1" onmouseover="mouseover()">
+    <p>Telephone: 0800111222</p>
+	<p>Email: hotelAvisors@gmail.com</p>
+</div>
+</body>
+</html>
+<script>
+// Accessing through the DOM using class name allows the user to make more than one change, unlike using an ID:
+function mouseover() {
+document.getElementByClassName("a1").innerHTML = "0800111222 call us now!";
+document.getElementByClassName("a1").style.color = "red";
+document.getElementByClassName("a1").style.font-family = "Helvetica";
+}
+// Creating some css styling:
+.b1 {
+text-align: centre;
+font-family: Helvetica;
+size: 30px;
+}
+</script>

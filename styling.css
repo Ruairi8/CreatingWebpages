@@ -1,0 +1,25 @@
+/* A CSS page to apply some styling.
+/* Styling the html section and body section. Margin is given 4 values which specify the left, top, bottom and right sides of the page. */
+html, body {
+	margin: 100px 150px 200px 200px;
+	height: 100%;
+	border: 1px solid green;
+}
+/* Fill is used to change color in css. */
+.bar1 {
+	fill: black;
+}
+.bar1:hover {
+	fill: red;
+}
+/* Chaning the color and style of the text */
+.text {
+	fill: black;
+	font-family: "Time New Roman", serif;
+}
+
+.container {
+width: 600px;
+height: 600px;
+background-color: yellow;
+}

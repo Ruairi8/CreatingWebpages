@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Web Application Project - Developing my own Webpage</title>
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+	<link rel="stylesheet" href="styling.css">
+</head>
+<body style="background-color:#ECFBB1">
+<script>
+<!-- Changing the html and style of button:
+function f1(){
+    document.getElementById("head2").innerHTML = "You can enter your details below";
+	document.getElementById("head2").style.color = "red";
+}
+
+<!-- Reference 1 got from  https://www.upgrad.com/blog/email-validation-in-javascript/ -->
+<!-- End of Reference 1 -->
+function validation(mail) {
+// Accessing html via the DOM:
+var email=document.getElementById("email").value;
+var password=document.getElementById("password").value;
+// The mailformat variable contains all the required characters for an email, for example, letters before and after the @ character:
+var mailformat=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+if(email.value.match(mailformat))
+{
+alert("Valid email address!")
+// .focus() here to give focus to the user input:
+document.box.text1.focus()
+return true;
+}
+else if(email.value.length === 0)
+{
+alert("You must enter your email to proceed!")
+document.box.text1.focus()
+return false;
+else
+{
+alert("You have entered an invalid email address!")
+document.box.text1.focus()
+return false;
+}
+if(password.value.match())
+{
+alert("Password okay!")
+document.box.psw.focus()
+return true;
+}
+else if(password.value.length === 0)
+{
+alert("You have no entered your password!")
+document.box.psw.focus()
+return false;
+else
+{
+alert("That is not a valid password!")
+document.box.psw.focus()
+return false;
+}
+}
+
+</script>
+<div class="class3">
+    <div class="class2">
+        <h1 style="font-family: Lucida Console, Monospace">Welcome!</h1>
+		<button onclick="f1()" id="head2">Click</button>
+	    <h2 class="class1">Fáilte!</h2>
+		    <div class="class4">
+                <ul>
+<!-- a is an anchor tag. The href property specifies a location. A hash - # within a hyperlink specifies an html element id to which the window should be 
+  scrolled. -->
+	                <li><a href="svg2.html">Home</a></li>
+		            <li><a href="who.html">Who are we?</a></li>
+		            <li><a href="services.html">Our Services</a></li>
+		            <li><a href="contact.html">Contact</a></li>
+	            </ul>
+                <h1><center>HotelFinderIreland - Choose your favourite hotels</center></h1>
+			</div>
+    <form class="box" name="box" action="Project1.html" method="POST" onsubmit="required()">
+        Enter username and password:
+	    <div class="container">
+            <label><b>Email:</b></label>
+	        <input type="email" placeholder="Email here" id="email" name="text1" onkeydown="validation()">
+		    <label for="psw"><i>Password:</i></label>
+	        <input type="password" id="password" name="psw" required>
+	        <input type="submit" value="login">
+	    </div>
+    </form>
+	</div>
+</div>
+<!-- Adding styles to the DOM by creating class names: -->
+<style>
+<!-- This class provides a box where the user email and password is entered-->
+.container {
+    width:232px;
+	height:220px;
+    padding:9px;
+	white-space: normal;
+	font-family: Helvetica;
+	margin:8px;
+	background-color:rgb(40, 190, 10, 0.6);
+}
+<!-- Class is used to style whats inside the form tags, where the user inputs their information -->
+.box { 
+    padding:8px;
+	border: 0.75px solid black;
+	height: 450px;
+	margin: 40px 40px 50px 50px;
+	color: rgb(30, 40, 230, 0.8);
+	font-family: "Lucida Console", Monospace;
+}
+.class1 {
+    font-family: "Lucida Console", Monospace;
+	color: blue;
+}
+.class2 {
+    font-family: "Gerogia";
+	font-size: 40px;
+	margin: 2px;
+	position: absolute;
+	color: green;
+}
+<!-- This class provides a backround image imported from a .jpg file inside a folder. -->
+.class3 {
+    width: 100%;
+	height: 750px;
+	padding: 0 40px;
+	position: relative;
+	background-image: url(../WebApplicFolder/image1.jpg);
+	background-position: centre centre;
+	background-repeat: no-repeat;
+}
+</style>
+</body>
+</html>
+
